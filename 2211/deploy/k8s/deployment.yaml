@@ -1,46 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: anotherclass-221
-  name: api-tester-2211
+  namespace: success-221
+  name: api-success-2211
   labels:
-    part-of: k8s-anotherclass
+    part-of: k8s-success
     component: backend-server
-    name: api-tester
-    instance: api-tester-2211
+    name: api-success
+    instance: api-success-2211
     version: 1.0.0
     managed-by: kubectl
 spec:
   selector:
     matchLabels:
-      part-of: k8s-anotherclass
+      part-of: k8s-success
       component: backend-server
-      name: api-tester
-      instance: api-tester-2211
+      name: api-success
+      instance: api-success-2211
   replicas: 2
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        part-of: k8s-anotherclass
+        part-of: k8s-success
         component: backend-server
-        name: api-tester
-        instance: api-tester-2211
+        name: api-success
+        instance: api-success-2211
         version: 1.0.0
     spec:
       nodeSelector:
         kubernetes.io/hostname: k8s-master
       containers:
-        - name: api-tester-2211
-          image: 1pro/api-tester:v1.0.0
+        - name: api-success-2211
+          image: taebong113/api-tester:v1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: http
           envFrom:
             - configMapRef:
-                name: api-tester-2211-properties
+                name: api-success-2211-properties
           startupProbe:
             httpGet:
               path: "/startup"
@@ -72,4 +72,4 @@ spec:
       volumes:
         - name: secret-datasource
           secret:
-            secretName: api-tester-2211-postgresql
+            secretName: api-success-2211-postgresql
