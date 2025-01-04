@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: anotherclass-221
-  name: api-tester-2211-properties
+  namespace: success-221
+  name: api-successs-2211-properties
   labels:
-    part-of: k8s-anotherclass
+    part-of: k8s-success
     component: backend-server
-    name: api-tester
-    instance: api-tester-2211
+    name: api-success
+    instance: api-success-2211
     version: 1.0.0
     managed-by: kubectl
 data:
